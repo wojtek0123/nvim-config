@@ -1,5 +1,6 @@
 return {
-  cmd = { "typescript-language-server", "--stdio" },
+  -- cmd = { "typescript-language-server", "--stdio" },
+  cmd = { "vtsls --stdio" },
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -8,6 +9,6 @@ return {
     "typescriptreact",
     "typescript.tsx",
   },
-  root_markers = { "package.json" },
+  root_markers = { "package.json", "tsconfig.json" },
   workspace_required = true, -- Only attach if a workspace is found
 }
