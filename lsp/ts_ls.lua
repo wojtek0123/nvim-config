@@ -8,6 +8,6 @@ return {
     "typescriptreact",
     "typescript.tsx",
   },
-  root_markers = { "package.json" },
-  workspace_required = true, -- Only attach if a workspace is found
+  root_markers = { "package.json", "nx.json" },
+  workspace_required = true,
 }
