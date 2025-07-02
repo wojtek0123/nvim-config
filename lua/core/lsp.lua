@@ -6,7 +6,7 @@ vim.lsp.enable({
   "css",
   "angularls",
   "tailwindcss",
-  "vuels",
+  -- "vuels",
 })
 
 vim.diagnostic.config({
