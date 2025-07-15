@@ -32,6 +32,7 @@ return {
     keymaps = {
       show_help = "<f1>",
     },
+    floating_window_scaling_factor = 1,
   },
   -- 👇 if you use `open_for_directories=true`, this is recommended
   init = function()
