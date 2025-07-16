@@ -27,3 +27,5 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.showbreak = "↳"
 vim.o.confirm = true
+
+vim.g.lazygit_floating_window_scaling_factor = 1.0
