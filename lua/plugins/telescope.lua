@@ -17,7 +17,10 @@ return {
     require("telescope").setup({
       defaults = {
         mappings = {
-          i = { ["<c-enter>"] = "to_fuzzy_refine" },
+          i = {
+            ["<c-enter>"] = "to_fuzzy_refine",
+            ["<c-v>"] = require("telescope.actions.layout").toggle_preview,
+          },
           n = {
             -- I'm used to closing buffers with "d" from bufexplorer
             ["d"] = require("telescope.actions").delete_buffer,
@@ -26,6 +29,9 @@ return {
             ["v"] = require("telescope.actions").select_vertical,
             ["h"] = require("telescope.actions").select_horizontal,
           },
+        },
+        preview = {
+          hide_on_startup = true, -- Hide previewer when picker starts
         },
       },
       extensions = {
