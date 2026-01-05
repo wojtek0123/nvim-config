@@ -28,4 +28,9 @@ vim.opt.linebreak = true
 vim.opt.showbreak = "↳"
 vim.o.confirm = true
 
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.bo.softtabstop = 2
+
 vim.g.lazygit_floating_window_scaling_factor = 1.0

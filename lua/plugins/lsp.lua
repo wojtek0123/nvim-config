@@ -84,6 +84,12 @@ return {
 
     local servers = {}
 
+    for key, value in pairs(servers) do
+      local server = value or {}
+      server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+      vim.lsp.config(key, value)
+    end
+
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       "stylua",
@@ -93,13 +99,6 @@ return {
     require("mason-lspconfig").setup({
       ensure_installed = {},
       automatic_installation = false,
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-          require("lspconfig")[server_name].setup(server)
-        end,
-      },
     })
   end,
 }

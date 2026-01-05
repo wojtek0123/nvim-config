@@ -1,9 +1,21 @@
 return {
-  "catppuccin/nvim",
+  "rebelot/kanagawa.nvim",
+  -- "catppuccin/nvim",
   lazy = false,
-  name = "catppuccin",
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme("catppuccin-frappe")
+    require("kanagawa").setup({
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = "none",
+            },
+          },
+        },
+      },
+    })
+
+    vim.cmd.colorscheme("kanagawa")
   end,
 }
