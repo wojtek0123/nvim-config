@@ -1,15 +1,43 @@
 return {
   "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    { "mason-org/mason.nvim", opts = {} },
-    "mason-org/mason-lspconfig.nvim",
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    { "j-hui/fidget.nvim", opts = {} },
     "saghen/blink.cmp",
   },
   config = function()
+    local servers = {
+      lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = { globals = { "vim" } },
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+          },
+        },
+      },
+      ts_ls = {},
+      gopls = {},
+      angularls = {},
+      tailwindcss = {},
+      html = {},
+      css = {},
+      astro = {},
+    }
+
+    local blink = require("blink.cmp")
+    local defaults = {
+      capabilities = blink.get_lsp_capabilities(),
+    }
+
+    for server, config in pairs(servers) do
+      local merged_config = vim.tbl_deep_extend("force", defaults, config)
+
+      vim.lsp.config(server, merged_config)
+      vim.lsp.enable(server)
+    end
+
     vim.api.nvim_create_autocmd("LspAttach", {
-      group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+      group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
       callback = function(event)
         local map = function(keys, func, desc, mode)
           mode = mode or "n"
@@ -78,27 +106,6 @@ return {
           [vim.diagnostic.severity.WARN] = "WarningMsg",
         },
       },
-    })
-
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-    local servers = {}
-
-    for key, value in pairs(servers) do
-      local server = value or {}
-      server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-      vim.lsp.config(key, value)
-    end
-
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      "stylua",
-    })
-    require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-    require("mason-lspconfig").setup({
-      ensure_installed = {},
-      automatic_installation = false,
     })
   end,
 }
