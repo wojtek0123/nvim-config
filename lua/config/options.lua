@@ -34,3 +34,15 @@ vim.opt.expandtab = true
 vim.bo.softtabstop = 2
 
 vim.g.lazygit_floating_window_scaling_factor = 1.0
+
+-- netrw
+vim.g.netrw_banner = 0
+-- Overrides default netrw buffer settings to add numbers (nu) and relative numbers (rnu)
+vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
+-- vim.g.netrw_browse_split = 1
+vim.g.netrw_keepdir = 0
+vim.g.netrw_clipboard = 0
+vim.g.netrw_preview = 1
+vim.opt.splitright = true
+vim.g.netrw_altv = 1
+-- vim.g.netrw_liststyle = 0

@@ -16,3 +16,13 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+vim.keymap.set("n", "<leader>ee", ":Explore<CR>", { desc = "Toggle Netrw" })
+vim.keymap.set("n", "<leader>eh", ":Hexplore<CR>", { desc = "Toggle Horizontal Netrw" })
+vim.keymap.set("n", "<leader>ev", ":Vexplore<CR>", { desc = "Toggle Horizontal Netrw" })
+vim.keymap.set("n", "<Leader>et", ":Texplore<CR>", { silent = true, desc = "Fullscreen netrw" })
+--
+-- Map Alt + 1-9 to jump to specific tabs
+for i = 1, 9 do
+  vim.keymap.set("n", "<C-" .. i .. ">", i .. "gt", { silent = true, desc = "Go to tab " .. i })
+end

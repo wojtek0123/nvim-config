@@ -15,12 +15,13 @@ return {
           },
         },
       },
-      ts_ls = {},
+      -- ts_ls = {},
+      tsgo = {},
       gopls = {},
       angularls = {},
       tailwindcss = {},
       html = {},
-      css = {},
+      cssls = {},
       astro = {},
     }
 
@@ -56,7 +57,7 @@ return {
         map("<leader>cd", vim.diagnostic.open_float, "[C]ode [D]iagnostics for line")
         map("<leader>d", function()
           local config = vim.diagnostic.config()
-          if config.virtual_lines and config.virtual_lines.current_line then
+          if config and config.virtual_lines.current_line then
             vim.diagnostic.config({ virtual_lines = false })
           else
             vim.diagnostic.config({ virtual_lines = { current_line = true } })
