@@ -18,20 +18,22 @@ return {
       defaults = {
         mappings = {
           i = {
-            ["<c-enter>"] = "to_fuzzy_refine",
-            ["<c-v>"] = require("telescope.actions.layout").toggle_preview,
+            ["<c-p>"] = require("telescope.actions.layout").toggle_preview,
           },
           n = {
-            -- I'm used to closing buffers with "d" from bufexplorer
             ["d"] = require("telescope.actions").delete_buffer,
-            -- I'm also used to quitting bufexplorer with q instead of escape
             ["q"] = require("telescope.actions").close,
             ["v"] = require("telescope.actions").select_vertical,
             ["h"] = require("telescope.actions").select_horizontal,
+            ["p"] = require("telescope.actions.layout").toggle_preview,
           },
         },
         preview = {
           hide_on_startup = true, -- Hide previewer when picker starts
+        },
+        layout_config = {
+          width = { padding = 0 },
+          height = { padding = 0 },
         },
       },
       extensions = {
@@ -57,30 +59,24 @@ return {
     vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
     vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[ ] Find existing buffers" })
-
     vim.keymap.set(
       "n",
       "<leader><leader>",
       "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<cr>",
       { desc = "[ ] Open telescope buffers" }
     )
-
-    -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set("n", "<leader>/", function()
-      -- You can pass additional configuration to Telescope to change the theme, layout, etc.
       builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
         winblend = 10,
         previewer = false,
       }))
     end, { desc = "[/] Fuzzily search in current buffer" })
-
     vim.keymap.set("n", "<leader>s/", function()
       builtin.live_grep({
         grep_open_files = true,
         prompt_title = "Live Grep in Open Files",
       })
     end, { desc = "[S]earch [/] in Open Files" })
-
     vim.keymap.set("n", "<leader>sn", function()
       builtin.find_files({ cwd = vim.fn.stdpath("config") })
     end, { desc = "[S]earch [N]eovim files" })
