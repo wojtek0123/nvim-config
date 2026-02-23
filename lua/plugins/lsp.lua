@@ -16,11 +16,12 @@ return {
         },
       },
       ts_ls = {},
+      tsgo = {},
       gopls = {},
       angularls = {},
       tailwindcss = {},
       html = {},
-      css = {},
+      cssls = {},
       astro = {},
     }
 
