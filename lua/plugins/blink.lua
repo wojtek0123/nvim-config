@@ -22,8 +22,8 @@ return {
         draw = {
           gap = 2,
           columns = {
-            { "kind_icon", "kind", gap = 1 },
             { "label", "label_description", gap = 1 },
+            { "kind_icon", "kind", gap = 1 },
           },
         },
       },
@@ -48,7 +48,7 @@ return {
         codecompanion = { "codecompanion", "buffer" },
       },
     },
-    fuzzy = { implementation = "lua" },
+    fuzzy = { implementation = "prefer_rust" },
   },
-  opts_extend = { "sources.default" },
+  -- opts_extend = { "sources.default" },
 }
