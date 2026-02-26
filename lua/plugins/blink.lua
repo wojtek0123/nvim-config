@@ -13,11 +13,6 @@ return {
       -- kind_icons = require("icons").symbol_kinds,
     },
     completion = {
-      menu = {
-        draw = {
-          treesitter = { "lsp" },
-        },
-      },
       list = {
         selection = { preselect = true, auto_insert = true },
       },
@@ -25,6 +20,7 @@ return {
       menu = {
         scrollbar = false,
         draw = {
+          treesitter = { "lsp" },
           gap = 2,
           columns = {
             { "label", "label_description", gap = 1 },
