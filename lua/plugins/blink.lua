@@ -10,9 +10,14 @@ return {
     },
     appearance = {
       -- nerd_font_variant = "normal",
-      kind_icons = require("icons").symbol_kinds,
+      -- kind_icons = require("icons").symbol_kinds,
     },
     completion = {
+      menu = {
+        draw = {
+          treesitter = { "lsp" },
+        },
+      },
       list = {
         selection = { preselect = true, auto_insert = true },
       },
