@@ -20,7 +20,6 @@ return {
       menu = {
         scrollbar = false,
         draw = {
-          treesitter = { "lsp" },
           gap = 2,
           columns = {
             { "label", "label_description", gap = 1 },
