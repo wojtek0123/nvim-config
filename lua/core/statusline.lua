@@ -37,11 +37,26 @@ end
 --   return count
 -- end
 
-local function get_filename()
-  local path = vim.fn.expand("%:p"):gsub(vim.fn.expand("$HOME"), "~")
+_G.statusline_show_path = false
 
-  if path == "" then
+vim.keymap.set("n", "<leader>sp", function()
+  _G.statusline_show_path = not _G.statusline_show_path
+  vim.cmd("redrawstatus")
+end, { desc = "Toggle full path in statusline" })
+
+local function get_filename()
+  local full = vim.fn.expand("%:p"):gsub(vim.fn.expand("$HOME"), "~")
+
+  local path
+  if full == "" then
     path = "[No Name]"
+  elseif _G.statusline_show_path then
+    -- local filename = vim.fn.fnamemodify(full, ":t")
+    -- local dir = vim.fn.fnamemodify(full, ":h")
+    -- local short_dir = dir:gsub("([^/])[^/]*/", "%1/"):gsub("([^/])[^/]*$", "%1")
+    path = full
+  else
+    path = vim.fn.fnamemodify(full, ":t")
   end
 
   local flags = ""
@@ -139,3 +154,4 @@ function _G.Statusline.render()
 end
 
 vim.opt.statusline = "%{%v:lua.Statusline.render()%}"
+vim.opt.laststatus = 3
