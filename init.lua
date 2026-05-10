@@ -1,13 +1,15 @@
 require("core.pack")
-require("vim._core.ui2").enable({})
-require("config.options")
-require("config.keymaps")
-require("config.autocmds")
 require("core.statusline")
 require("core.diagnostics")
 
+require("vim._core.ui2").enable({})
+
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+
 require("plugins.lsp")
-require("plugins.yazi")
+-- require("plugins.yazi")
 require("plugins.telescope")
 require("plugins.treesitter")
 require("plugins.colorscheme")

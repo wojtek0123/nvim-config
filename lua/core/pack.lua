@@ -4,13 +4,6 @@ local function gh(repo)
   return "https://github.com/" .. repo
 end
 
--- do
---  To inspect plugin state and pending updates, run
---    :lua vim.pack.update(nil, { offline = true })
---
---  To update plugins, run
---    :lua vim.pack.update()
-
 local function run_build(name, cmd, cwd)
   local result = vim.system(cmd, { cwd = cwd }):wait()
   if result.code ~= 0 then
@@ -23,6 +16,7 @@ local function run_build(name, cmd, cwd)
     vim.notify(("Build failed for %s:\n%s"):format(name, output), vim.log.levels.ERROR)
   end
 end
+
 vim.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
     local name = ev.data.spec.name
@@ -52,17 +46,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
     end
   end,
 })
--- end
-
--- ---@type (string|vim.pack.Spec)[]
--- local telescope_plugins = {
---   gh("nvim-lua/plenary.nvim"),
---   gh("nvim-telescope/telescope.nvim"),
---   gh("nvim-telescope/telescope-ui-select.nvim"),
--- }
--- if vim.fn.executable("make") == 1 then
---   table.insert(telescope_plugins, gh("nvim-telescope/telescope-fzf-native.nvim"))
--- end
 
 vim.pack.add({
   gh("windwp/nvim-autopairs"),
@@ -84,6 +67,7 @@ vim.pack.add({
   gh("folke/which-key.nvim"),
   gh("mikavilpas/yazi.nvim"),
   { src = gh("saghen/blink.cmp"), version = vim.version.range("1.*") },
+  gh("stevearc/oil.nvim"),
 
   -- telescope_plugins,
   gh("nvim-lua/plenary.nvim"),
@@ -97,15 +81,12 @@ end
 
 require("guess-indent").setup({})
 require("nvim-autopairs").setup({})
-
--- require("fugitive").setup({})
---
---
--- vim.pack.add("tpope/vim-fugitive", { type = "opt" })
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "gitcommit",
-  desc = "Load fugitive for git commits",
-  callback = function()
-    vim.cmd("packadd vim-fugitive")
-  end,
+require("oil").setup({
+  view_options = { show_hidden = true },
+  keymaps = {
+    ["<Tab>"] = "actions.select",
+    ["<S-Tab>"] = "actions.parent",
+  },
 })
+
+vim.keymap.set("n", "<leader>e", ":Oil<cr>", { desc = "Open parent directory" })
