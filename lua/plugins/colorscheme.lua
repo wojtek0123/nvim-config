@@ -1,21 +1,35 @@
-return {
-  "rebelot/kanagawa.nvim",
-  -- "catppuccin/nvim",
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require("kanagawa").setup({
-      colors = {
-        theme = {
-          all = {
-            ui = {
-              bg_gutter = "none",
-            },
-          },
+require("kanagawa").setup({
+  colors = {
+    theme = {
+      all = {
+        ui = {
+          bg_gutter = "none",
         },
       },
-    })
+    },
+  },
+})
 
-    vim.cmd.colorscheme("kanagawa")
-  end,
-}
+vim.cmd.colorscheme("kanagawa")
+
+-- return {
+--   "rebelot/kanagawa.nvim",
+--   -- "catppuccin/nvim",
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     require("kanagawa").setup({
+--       colors = {
+--         theme = {
+--           all = {
+--             ui = {
+--               bg_gutter = "none",
+--             },
+--           },
+--         },
+--       },
+--     })
+--
+--     vim.cmd.colorscheme("kanagawa")
+--   end,
+-- }
