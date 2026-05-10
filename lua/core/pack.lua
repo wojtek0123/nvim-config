@@ -69,7 +69,6 @@ vim.pack.add({
   { src = gh("saghen/blink.cmp"), version = vim.version.range("1.*") },
   gh("stevearc/oil.nvim"),
 
-  -- telescope_plugins,
   gh("nvim-lua/plenary.nvim"),
   gh("nvim-telescope/telescope.nvim"),
   gh("nvim-telescope/telescope-ui-select.nvim"),
@@ -89,4 +88,33 @@ require("oil").setup({
   },
 })
 
-vim.keymap.set("n", "<leader>e", ":Oil<cr>", { desc = "Open parent directory" })
+require("ibl").setup({
+  scope = { enabled = false },
+})
+
+require("kanagawa").setup({
+  colors = {
+    theme = {
+      all = {
+        ui = {
+          bg_gutter = "none",
+        },
+      },
+    },
+  },
+})
+
+require("todo-comments").setup({
+  signs = false,
+})
+
+require("which-key").setup({
+  delay = 250,
+  icons = { mappings = vim.g.have_nerd_font },
+  spec = {
+    { "<leader>s", group = "[S]earch" },
+    { "<leader>t", group = "[T]oggle" },
+    { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+    { "gr", group = "LSP Actions", mode = { "n" } },
+  },
+})

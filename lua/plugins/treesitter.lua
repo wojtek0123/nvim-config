@@ -46,60 +46,13 @@ vim.api.nvim_create_autocmd("FileType", {
     local installed_parsers = require("nvim-treesitter").get_installed("parsers")
 
     if vim.tbl_contains(installed_parsers, language) then
-      -- Enable the parser if it is already installed
       treesitter_try_attach(buf, language)
     elseif vim.tbl_contains(available_parsers, language) then
-      -- If a parser is available in `nvim-treesitter`, auto-install it and enable it after the installation is done
       require("nvim-treesitter").install(language):await(function()
         treesitter_try_attach(buf, language)
       end)
     else
-      -- Try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
       treesitter_try_attach(buf, language)
     end
   end,
 })
--- end
-
--- return {
---   "nvim-treesitter/nvim-treesitter",
---   branch = "main",
---   lazy = false,
---   build = ":TSUpdate",
---   config = function()
---     local ensure_installed = {
---       "bash",
---       "html",
---       "javascript",
---       "json",
---       "lua",
---       "luadoc",
---       "regex",
---       "vim",
---       "vimdoc",
---       "yaml",
---       "angular",
---       "css",
---       "scss",
---       "typescript",
---     }
---
---     local ts = require("nvim-treesitter")
---     for _, parser in ipairs(ensure_installed) do
---       ts.install(parser)
---     end
---
---     vim.api.nvim_create_autocmd("FileType", {
---       callback = function(args)
---         local ok, _ = pcall(vim.treesitter.start, args.buf)
---
---         if ok then
---           vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
---           -- Folding
---           -- vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
---           -- vim.wo[0][0].foldmethod = "expr"
---         end
---       end,
---     })
---   end,
--- }

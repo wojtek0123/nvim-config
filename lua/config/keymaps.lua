@@ -16,3 +16,6 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+vim.keymap.set("n", "<leader>e", ":Oil<cr>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>lg", ":LazyGit<CR>", { desc = "Open [L]azy[G]it" })

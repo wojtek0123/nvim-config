@@ -9,7 +9,6 @@ require("config.keymaps")
 require("config.autocmds")
 
 require("plugins.lsp")
--- require("plugins.yazi")
 require("plugins.telescope")
 require("plugins.treesitter")
 require("plugins.colorscheme")
@@ -21,3 +20,5 @@ require("plugins.lint")
 require("plugins.blink")
 require("plugins.indent-blankline")
 require("plugins.comments")
+
+vim.cmd.colorscheme("kanagawa")
