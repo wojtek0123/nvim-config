@@ -72,6 +72,7 @@ vim.pack.add({
   gh("nvim-lua/plenary.nvim"),
   gh("nvim-telescope/telescope.nvim"),
   gh("nvim-telescope/telescope-ui-select.nvim"),
+  gh("nvim-tree/nvim-web-devicons"),
 })
 
 if vim.fn.executable("make") == 1 then
@@ -82,9 +83,12 @@ require("guess-indent").setup({})
 require("nvim-autopairs").setup({})
 require("oil").setup({
   view_options = { show_hidden = true },
+  columns = {
+    "icon",
+  },
   keymaps = {
-    ["<Tab>"] = "actions.select",
-    ["<S-Tab>"] = "actions.parent",
+    -- ["<Tab>"] = "actions.select",
+    -- ["<S-Tab>"] = "actions.parent",
   },
 })
 
