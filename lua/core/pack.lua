@@ -25,11 +25,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
       return
     end
 
-    if name == "telescope-fzf-native.nvim" and vim.fn.executable("make") == 1 then
-      run_build(name, { "make" }, ev.data.path)
-      return
-    end
-
     if name == "LuaSnip" then
       if vim.fn.has("win32") ~= 1 and vim.fn.executable("make") == 1 then
         run_build(name, { "make", "install_jsregexp" }, ev.data.path)
@@ -69,15 +64,9 @@ vim.pack.add({
   { src = gh("saghen/blink.cmp"), version = vim.version.range("1.*") },
   gh("stevearc/oil.nvim"),
 
-  gh("nvim-lua/plenary.nvim"),
-  gh("nvim-telescope/telescope.nvim"),
-  gh("nvim-telescope/telescope-ui-select.nvim"),
+  gh("ibhagwan/fzf-lua"),
   gh("nvim-tree/nvim-web-devicons"),
 })
-
-if vim.fn.executable("make") == 1 then
-  gh("nvim-telescope/telescope-fzf-native.nvim")
-end
 
 require("guess-indent").setup({})
 require("nvim-autopairs").setup({})

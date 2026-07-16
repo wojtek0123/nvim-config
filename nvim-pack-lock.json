@@ -9,6 +9,26 @@
       "rev": "dca1a190aa85f9065979ef35802fb77131911106",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "diffview-plus.nvim": {
+      "rev": "fd688b76e260a26db4b22561af4db16596165e73",
+      "src": "ssh://git@github.com/dlyongemallo/diffview-plus.nvim"
+    },
+    "dressing.nvim": {
+      "rev": "2d7c2db2507fa3c4956142ee607431ddb2828639",
+      "src": "ssh://git@github.com/stevearc/dressing.nvim"
+    },
+    "fff.nvim": {
+      "rev": "030a583b37802416ce9108295b209d2e6b9d0079",
+      "src": "ssh://git@github.com/dmtrKovalenko/fff.nvim"
+    },
+    "fzf-lua": {
+      "rev": "532d463f5c83595192fe740572d8fd6902b2217a",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "gitlab.nvim": {
+      "rev": "a87e55ef99d77c53167826ee9d4474e35cad57be",
+      "src": "ssh://git@github.com/harrisoncramer/gitlab.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
@@ -40,6 +60,10 @@
     "mason.nvim": {
       "rev": "e54f5bf5f12c560da31c17eee5b3e1bd369f3ff9",
       "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "ssh://git@github.com/MunifTanjim/nui.nvim"
     },
     "nvim-autopairs": {
       "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
@@ -101,6 +125,10 @@
     "yazi.nvim": {
       "rev": "e7259dc1224a2f9b143c4c536913d1501bdc05e8",
       "src": "https://github.com/mikavilpas/yazi.nvim"
+    },
+    "zen-mode.nvim": {
+      "rev": "8564ce6d29ec7554eb9df578efa882d33b3c23a7",
+      "src": "ssh://git@github.com/folke/zen-mode.nvim"
     }
   }
 }

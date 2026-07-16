@@ -9,7 +9,7 @@ require("config.keymaps")
 require("config.autocmds")
 
 require("plugins.lsp")
-require("plugins.telescope")
+require("plugins.fzf-lua")
 require("plugins.treesitter")
 require("plugins.conform")
 require("plugins.gitsigns")
