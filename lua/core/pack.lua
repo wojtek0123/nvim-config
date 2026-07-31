@@ -66,6 +66,7 @@ vim.pack.add({
 
   gh("ibhagwan/fzf-lua"),
   gh("nvim-tree/nvim-web-devicons"),
+  gh("windwp/nvim-ts-autotag"),
 })
 
 require("guess-indent").setup({})
@@ -111,3 +112,4 @@ require("which-key").setup({
     { "gr", group = "LSP Actions", mode = { "n" } },
   },
 })
+require("nvim-ts-autotag").setup({})
